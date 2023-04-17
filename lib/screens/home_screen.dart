@@ -121,12 +121,24 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                   ),
                 ],
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Column(
-                  children: [TopTips(), TopTips(), TopTips(), TopTips()],
+              const SizedBox(height: 50),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  // color: Colors.blueAccent,
+                  width: double.infinity,
+                  height: 350,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 40,
+                    itemBuilder: (BuildContext context, int index) {
+                      return TopTips();
+                    },
+                  ),
+                  // child: /,
                 ),
-              )
+              ),
+              // SingleChildScrollView()
               // Expanded(
               //   child: ListView.builder(
               //       scrollDirection: Axis.horizontal,
@@ -208,42 +220,34 @@ class TopTips extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          margin: const EdgeInsets.all(8),
-          width: 200,
-          height: 250,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(60),
+    return Container(
+      margin: const EdgeInsets.all(8),
+      width: 200,
+      height: 250,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(60),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image(
+            image: NetworkImage("https://i.redd.it/on7nrr9578l61.jpg"),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image(
-                  image: NetworkImage("https://i.redd.it/on7nrr9578l61.jpg"),
-                ),
-                Text("Meelaha cagaaran"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text("\$ 200"),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.favorite_outline,
-                          // color: Colors.white,
-                        ))
-                  ],
-                )
-              ],
-            ),
-          ),
-        ),
-      ],
+          Text("Meelaha cagaaran"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("\$ 200"),
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.favorite_outline,
+                    // color: Colors.white,
+                  ))
+            ],
+          )
+        ],
+      ),
     );
   }
 }
